@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ملاذ رائد | أثر ووقار - Raed's Sanctuary</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Cairo for Arabic & Playfair/Inter for English -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            arabic: ['Cairo', 'sans-serif'],
+            serifArabic: ['Amiri', 'serif'],
+            english: ['Playfair Display', 'serif'],
+            bodyEng: ['Inter', 'sans-serif']
+          },
+          colors: {
+            noir: '#0a0a0c',
+            surface: '#121217',
+            surfaceCard: '#1a1a23',
+            amberGlow: '#d97706',
+            amberLight: '#fbbf24',
+            subtleGray: '#8b8b9e'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #0a0a0c;
+      color: #e2e8f0;
+      scroll-behavior: smooth;
+    }
+    .glow-amber {
+      text-shadow: 0 0 20px rgba(217, 119, 6, 0.4);
+    }
+    .card-border {
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .card-border:hover {
+      border-color: rgba(217, 119, 6, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px -10px rgba(217, 119, 6, 0.15);
+    }
+    .fade-out-burn {
+      animation: dissipate 1.4s forwards;
+    }
+    @keyframes dissipate {
+      0% { opacity: 1; filter: blur(0px); transform: scale(1); }
+      50% { opacity: 0.5; filter: blur(4px); transform: scale(0.98); }
+      100% { opacity: 0; filter: blur(12px); transform: scale(0.92); }
+    }
+  </style>
+</head>
+<body class="font-arabic selection:bg-amber-600 selection:text-white">
+
+  <!-- Floating Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0c]/85 backdrop-blur-md border-b border-white/10 px-6 py-4 transition-all">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <!-- Site Logo -->
+      <a href="#hero" class="flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse"></span>
+        <span id="nav-brand" class="text-xl font-bold tracking-wide text-white">ملاذ رائد <span class="text-amber-500 font-normal text-sm">| أثر ووقار</span></span>
+      </a>
+
+      <!-- Navigation Links -->
+      <div class="hidden md:flex items-center gap-8 text-sm text-subtleGray font-medium">
+        <a href="#about" class="hover:text-amberLight transition" data-i18n="nav-about">عن المنصة</a>
+        <a href="#betrayal" class="hover:text-amberLight transition" data-i18n="nav-betrayal">الخذلان والنهوض</a>
+        <a href="#honor" class="hover:text-amberLight transition" data-i18n="nav-honor">المواقف المشرّفة</a>
+        <a href="#release" class="hover:text-amberLight transition" data-i18n="nav-release">ركن التحرير</a>
+      </div>
+
+      <!-- Language Switcher Button -->
+      <button id="langToggle" class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/20 bg-surface text-xs text-white hover:border-amber-500 hover:text-amberLight transition">
+        <i data-lucide="globe" class="w-3.5 h-3.5 text-amber-500"></i>
+        <span id="langText">English</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 px-6 overflow-hidden">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(217,119,6,0.12)_0%,_transparent_65%)]"></div>
+    <div class="max-w-4xl text-center space-y-6">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-amberLight tracking-wider uppercase">
+        <i data-lucide="compass" class="w-3.5 h-3.5"></i>
+        <span data-i18n="hero-badge">مساحة للتأمل، الكبرياء، وحصانة الذات</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-tight" data-i18n="hero-title">
+        حين ينكسر الوهم، <br>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-500 to-amber-200">تبدأ سيادة الروح</span>
+      </h1>
+
+      <p class="text-base sm:text-xl text-subtleGray max-w-2xl mx-auto leading-relaxed" data-i18n="hero-subtitle">
+        الخذلان لا يهدم إلا ما كان هشاً، أما المواقف المشرّفة فهي المنارة التي تعيد صياغة الثقة وتورث المرء هيبة النفس واستقلالها.
+      </p>
+
+      <div class="pt-6 flex flex-wrap justify-center gap-4">
+        <a href="#betrayal" class="px-7 py-3 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-semibold text-sm transition flex items-center gap-2 shadow-lg shadow-amber-600/20">
+          <span data-i18n="hero-btn-primary">استكشف فصول الذات</span>
+          <i data-lucide="arrow-left" class="w-4 h-4 rtl-flip"></i>
+        </a>
+        <a href="#release" class="px-7 py-3 rounded-lg bg-white/5 border border-white/15 hover:bg-white/10 text-white font-medium text-sm transition" data-i18n="hero-btn-secondary">
+          ركن تفريغ الخذلان
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 1: The Anatomy of Betrayal & Resilience -->
+  <section id="betrayal" class="py-24 px-6 border-t border-white/5">
+    <div class="max-w-6xl mx-auto space-y-16">
+      <div class="text-center space-y-3">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white" data-i18n="betrayal-header">تفكيك الخذلان وإعادة ترميم الثقة</h2>
+        <p class="text-subtleGray text-sm sm:text-base max-w-xl mx-auto" data-i18n="betrayal-desc">
+          كيف نتحول من الصدمة إلى اليقين، ومن خيبة العطاء إلى مناعة النفس وعزتها.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <div class="p-8 rounded-2xl bg-surfaceCard card-border space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-500">
+            <i data-lucide="shield-alert" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white" data-i18n="card1-title">عتبة الخذلان</h3>
+          <p class="text-subtleGray text-sm leading-relaxed" data-i18n="card1-text">
+            الخذلان ليس دليلاً على ضعفك، بل هو كشفٌ متأخر لحقيقة غيرك. لا تعاتب المرآة إذا عكست لك واقعاً لم تكن ترغب في تصديقه.
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="p-8 rounded-2xl bg-surfaceCard card-border space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-500">
+            <i data-lucide="anchor" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white" data-i18n="card2-title">ثبات الذات</h3>
+          <p class="text-subtleGray text-sm leading-relaxed" data-i18n="card2-text">
+            الثقة الحقيقية ليست توقع ألا يؤذيك أحد، بل هي اليقين بأنك قادر على الاستغناء، والنهوض بقامتك كاملة إن خذلك الجميع.
+          </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="p-8 rounded-2xl bg-surfaceCard card-border space-y-4">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-500">
+            <i data-lucide="flame" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-xl font-bold text-white" data-i18n="card3-title">الكبرياء الوعي</h3>
+          <p class="text-subtleGray text-sm leading-relaxed" data-i18n="card3-text">
+            لا تعامل الجفاء بالاستجداء، ولا تدفع ثمن نقائك بندم. كل خيبة لم تكسرك هي أساس حصن لا يقبل الابتزاز العاطفي.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Honorable Stands & Dignity -->
+  <section id="honor" class="py-24 px-6 bg-surface/50 border-t border-white/5">
+    <div class="max-w-5xl mx-auto space-y-12">
+      <div class="text-center space-y-3">
+        <span class="text-xs uppercase tracking-widest text-amber-500 font-bold" data-i18n="honor-tag">ميزان الرجال والضمائر</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white" data-i18n="honor-header">المواقف المشرّفة وقيمة الإنسان</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-6 rounded-xl bg-noir card-border flex gap-5">
+          <div class="text-amber-500 mt-1"><i data-lucide="check-circle-2" class="w-6 h-6"></i></div>
+          <div class="space-y-2">
+            <h4 class="text-lg font-bold text-white" data-i18n="honor-point1-h">الوفاء عند المقدرة</h4>
+            <p class="text-sm text-subtleGray leading-relaxed" data-i18n="honor-point1-p">
+              ألا تتبدل قيمك حين تتغير الظروف، وألا تؤذي من أظهر لك ضعفه يوماً ما، فالشرف يبدأ حيث تنتهي المصلحة.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-xl bg-noir card-border flex gap-5">
+          <div class="text-amber-500 mt-1"><i data-lucide="check-circle-2" class="w-6 h-6"></i></div>
+          <div class="space-y-2">
+            <h4 class="text-lg font-bold text-white" data-i18n="honor-point2-h">الانسحاب الراقي</h4>
+            <p class="text-sm text-subtleGray leading-relaxed" data-i18n="honor-point2-p">
+              أن تعرف متى تغادر المجالس والعلاقات التي تنقص من قدرك دون ضجيج، تاركاً خلفك طيب الأثر ووحشة الغياب.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-xl bg-noir card-border flex gap-5">
+          <div class="text-amber-500 mt-1"><i data-lucide="check-circle-2" class="w-6 h-6"></i></div>
+          <div class="space-y-2">
+            <h4 class="text-lg font-bold text-white" data-i18n="honor-point3-h">شهامة الخصومة</h4>
+            <p class="text-sm text-subtleGray leading-relaxed" data-i18n="honor-point3-p">
+              حتى في النزاع، لا يفجر الكريم ولا يفشي سراً أؤتمن عليه؛ رفعة المرء تتجلى في عدله مع من اختلف معه.
+            </p>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-xl bg-noir card-border flex gap-5">
+          <div class="text-amber-500 mt-1"><i data-lucide="check-circle-2" class="w-6 h-6"></i></div>
+          <div class="space-y-2">
+            <h4 class="text-lg font-bold text-white" data-i18n="honor-point4-h">نصرة الحق بلا تردد</h4>
+            <p class="text-sm text-subtleGray leading-relaxed" data-i18n="honor-point4-p">
+              الوقوف مع الصواب حتى لو كنت بمفردك، لأن قيمة الكلمة الصادقة أثقل من جموع المجاملات الزائفة.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Release Section (صندوق تفريغ الثقل) -->
+  <section id="release" class="py-24 px-6 border-t border-white/5">
+    <div class="max-w-3xl mx-auto space-y-8 text-center">
+      <div class="space-y-2">
+        <h2 class="text-3xl font-bold text-white" data-i18n="release-title">محرقة الأثقال | ركن التخلي والتحرر</h2>
+        <p class="text-subtleGray text-sm" data-i18n="release-subtitle">اكتب ما أثقل صدرك من خذلان أو ندم هنا، ثم اضغط تحرير لتدعه يتبدد في الفضاء إلى الأبد.</p>
+      </div>
+
+      <div class="relative">
+        <textarea id="ventBox" rows="5" class="w-full bg-surfaceCard border border-white/10 rounded-xl p-4 text-white text-sm focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition resize-none placeholder-stone-600" placeholder="اكتب خذلانك هنا..."></textarea>
+      </div>
+
+      <div class="flex items-center justify-center gap-4">
+        <button id="burnBtn" class="px-8 py-3 bg-stone-800 hover:bg-amber-700 text-white rounded-lg font-semibold text-sm transition flex items-center gap-2 border border-white/10">
+          <i data-lucide="sparkles" class="w-4 h-4 text-amber-400"></i>
+          <span data-i18n="burn-btn">تحرير وتطهير الفكر</span>
+        </button>
+      </div>
+
+      <div id="releaseMsg" class="hidden text-amberLight text-sm font-semibold tracking-wide">
+        <span data-i18n="release-success">تلاشت الحروف.. لا تجعل ما مضى يسرق وقارك اليوم.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 px-6 border-t border-white/10 bg-noir text-center space-y-4">
+    <div class="text-white font-bold text-lg">
+      ملاذ رائد <span class="text-amber-500 font-light">| Raed's Sanctuary</span>
+    </div>
+    
+    <p class="text-subtleGray text-xs tracking-wider">
+      <span data-i18n="footer-credit">تصميم وتطوير وإنشاء:</span> 
+      <strong class="text-white hover:text-amber-400 transition cursor-pointer">رائد الياسري</strong>
+    </p>
+
+    <div class="text-[11px] text-stone-600">
+      &copy; 2026 جميع الحقوق محفوظة — نحو فكرٍ حر وذاتٍ مصانة.
+    </div>
+  </footer>
+
+  <!-- Script for Language Toggle, Icons & Interactivity -->
+  <script>
+    lucide.createIcons();
+
+    const translations = {
+      ar: {
+        dir: 'rtl',
+        langBtn: 'English',
+        navBrand: 'ملاذ رائد <span class="text-amber-500 font-normal text-sm">| أثر ووقار</span>',
+        navAbout: 'عن المنصة',
+        navBetrayal: 'الخذلان والنهوض',
+        navHonor: 'المواقف المشرّفة',
+        navRelease: 'ركن التحرير',
+        heroBadge: 'مساحة للتأمل، الكبرياء، وحصانة الذات',
+        heroTitle: 'حين ينكسر الوهم، <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-500 to-amber-200">تبدأ سيادة الروح</span>',
+        heroSubtitle: 'الخذلان لا يهدم إلا ما كان هشاً، أما المواقف المشرّفة فهي المنارة التي تعيد صياغة الثقة وتورث المرء هيبة النفس واستقلالها.',
+        heroBtnPrimary: 'استكشف فصول الذات',
+        heroBtnSecondary: 'ركن تفريغ الخذلان',
+        betrayalHeader: 'تفكيك الخذلان وإعادة ترميم الثقة',
+        betrayalDesc: 'كيف نتحول من الصدمة إلى اليقين، ومن خيبة العطاء إلى مناعة النفس وعزتها.',
+        card1Title: 'عتبة الخذلان',
+        card1Text: 'الخذلان ليس دليلاً على ضعفك، بل هو كشفٌ متأخر لحقيقة غيرك. لا تعاتب المرآة إذا عكست لك واقعاً لم تكن ترغب في تصديقه.',
+        card2Title: 'ثبات الذات',
+        card2Text: 'الثقة الحقيقية ليست توقع ألا يؤذيك أحد، بل هي اليقين بأنك قادر على الاستغناء، والنهوض بقامتك كاملة إن خذلك الجميع.',
+        card3Title: 'الكبرياء الوعي',
+        card3Text: 'لا تعامل الجفاء بالاستجداء، ولا تدفع ثمن نقائك بندم. كل خيبة لم تكسرك هي أساس حصن لا يقبل الابتزاز العاطفي.',
+        honorTag: 'ميزان الرجال والضمائر',
+        honorHeader: 'المواقف المشرّفة وقيمة الإنسان',
+        honorPoint1H: 'الوفاء عند المقدرة',
+        honorPoint1P: 'ألا تتبدل قيمك حين تتغير الظروف، وألا تؤذي من أظهر لك ضعفه يوماً ما، فالشرف يبدأ حيث تنتهي المصلحة.',
+        honorPoint2H: 'الانسحاب الراقي',
+        honorPoint2P: 'أن تعرف متى تغادر المجالس والعلاقات التي تنقص من قدرك دون ضجيج، تاركاً خلفك طيب الأثر ووحشة الغياب.',
+        honorPoint3H: 'شهامة الخصومة',
+        honorPoint3P: 'حتى في النزاع، لا يفجر الكريم ولا يفشي سراً أؤتمن عليه؛ رفعة المرء تتجلى في عدله مع من اختلف معه.',
+        honorPoint4H: 'نصرة الحق بلا تردد',
+        honorPoint4P: 'الوقوف مع الصواب حتى لو كنت بمفردك، لأن قيمة الكلمة الصادقة أثقل من جموع المجاملات الزائفة.',
+        releaseTitle: 'محرقة الأثقال | ركن التخلي والتحرر',
+        releaseSubtitle: 'اكتب ما أثقل صدرك من خذلان أو ندم هنا، ثم اضغط تحرير لتدعه يتبدد في الفضاء إلى الأبد.',
+        ventPlaceholder: 'اكتب خذلانك هنا...',
+        burnBtn: 'تحرير وتطهير الفكر',
+        releaseSuccess: 'تلاشت الحروف.. لا تجعل ما مضى يسرق وقارك اليوم.',
+        footerCredit: 'تصميم وتطوير وإنشاء:'
+      },
+      en: {
+        dir: 'ltr',
+        langBtn: 'العربية',
+        navBrand: 'Raed’s Sanctuary <span class="text-amber-500 font-normal text-sm">| Dignity & Legacy</span>',
+        navAbout: 'About',
+        navBetrayal: 'Disappointment & Rise',
+        navHonor: 'Noble Stands',
+        navRelease: 'Release Vault',
+        heroBadge: 'A Sanctuary for Reflection, Pride & Resilience',
+        heroTitle: 'When Illusions Shatter, <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-500 to-amber-200">The Soul Takes Sovereignty</span>',
+        heroSubtitle: 'Betrayal breaks only what is fragile. Noble stances are the beacons that rebuild trust and gift us unshakeable inner prestige.',
+        heroBtnPrimary: 'Explore Self Chapters',
+        heroBtnSecondary: 'Release Burden Box',
+        betrayalHeader: 'Dissecting Betrayal & Rebuilding Trust',
+        betrayalDesc: 'Navigating from shock to clarity, and turning disappointment into dignified self-immunity.',
+        card1Title: 'The Threshold of Betrayal',
+        card1Text: 'Betrayal proves neither weakness nor guilt on your part; it merely exposes what others hid. Never blame the mirror for reflecting reality.',
+        card2Title: 'Unshakable Self',
+        card2Text: 'True confidence is not expecting to never be hurt; it is knowing you can stand tall and remain whole even if everyone walks away.',
+        card3Title: 'Conscious Pride',
+        card3Text: 'Never counter coldness with pleading. Do not pay for your sincerity with regret. What failed to break you now guards your peace.',
+        honorTag: 'The True Measure of Dignity',
+        honorHeader: 'Noble Stances & The Human Essence',
+        honorPoint1H: 'Loyalty in Power',
+        honorPoint1P: 'Remaining faithful to principles regardless of shifting tides, and refusing to exploit someone who once stood vulnerable.',
+        honorPoint2H: 'Graceful Departure',
+        honorPoint2P: 'Knowing when to quietly walk away from places that diminish your worth, leaving behind clean grace and felt absence.',
+        honorPoint3H: 'Nobility in Rivalry',
+        honorPoint3P: 'Even in dispute, the honorable never reveals confided secrets; one’s true character shines in how they treat their adversary.',
+        honorPoint4H: 'Standing for Truth',
+        honorPoint4P: 'Aligning with justice even if you stand alone, for one genuine word outweighs crowds of shallow flattery.',
+        releaseTitle: 'The Burden Burner | Space for Release',
+        releaseSubtitle: 'Write down whatever disappointment weighs on you, then press release to let it vanish into nothingness.',
+        ventPlaceholder: 'Pour your burdens here...',
+        burnBtn: 'Release & Purify',
+        releaseSuccess: 'The words have vanished.. Never let yesterday hold today’s dignity hostage.',
+        footerCredit: 'Designed & Created by:'
+      }
+    };
+
+    let currentLang = 'ar';
+
+    const langToggleBtn = document.getElementById('langToggle');
+    const langTextSpan = document.getElementById('langText');
+    const ventBox = document.getElementById('ventBox');
+    const burnBtn = document.getElementById('burnBtn');
+    const releaseMsg = document.getElementById('releaseMsg');
+
+    langToggleBtn.addEventListener('click', () => {
+      currentLang = currentLang === 'ar' ? 'en' : 'ar';
+      const data = translations[currentLang];
+      
+      document.documentElement.dir = data.dir;
+      document.documentElement.lang = currentLang;
+      document.body.className = currentLang === 'ar' ? 'font-arabic' : 'font-bodyEng';
+      
+      langTextSpan.innerText = data.langBtn;
+      document.getElementById('nav-brand').innerHTML = data.navBrand;
+      ventBox.placeholder = data.ventPlaceholder;
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (data[key]) el.innerHTML = data[key];
+      });
+
+      // Update icon flip for RTL/LTR
+      document.querySelectorAll('.rtl-flip').forEach(icon => {
+        icon.style.transform = currentLang === 'en' ? 'rotate(180deg)' : 'rotate(0deg)';
+      });
+
+      lucide.createIcons();
+    });
+
+    // Vent box animation logic
+    burnBtn.addEventListener('click', () => {
+      if (!ventBox.value.trim()) return;
+
+      ventBox.classList.add('fade-out-burn');
+      setTimeout(() => {
+        ventBox.value = '';
+        ventBox.classList.remove('fade-out-burn');
+        releaseMsg.classList.remove('hidden');
+        setTimeout(() => releaseMsg.classList.add('hidden'), 4500);
+      }, 1300);
+    });
+  </script>
+</body>
+</html>
